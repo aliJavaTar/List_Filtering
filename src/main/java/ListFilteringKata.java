@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.List;
+
+public class ListFilteringKata {
+
+
+    public List<Integer> integerList(List<Object> array) {
+        int count = 0;
+        List<Integer> convertToInteger = Arrays.asList(new Integer[array.size()]);
+        for (int i = 0; i < array.size(); i++) {
+            if (array.get(i) instanceof Integer) {
+                convertToInteger.set(i, (Integer) array.get(i));
+            } else count++;
+        }
+
+        List<Integer> arrayIntegerWithoutNull = Arrays.asList(new Integer[array.size() - count]);
+
+        int counter = 0;
+        for (Integer integer : convertToInteger) {
+
+            if (integer != null) {
+                arrayIntegerWithoutNull.set(counter, integer);
+                ++counter;
+            }
+        }
+
+        return arrayIntegerWithoutNull;
+    }
+}
